@@ -185,6 +185,7 @@ nav {
   transition:background 0.3s, transform 0.3s;
 }
 .nav-cta:hover { background:var(--deep); transform:translateY(-1px); }
+a.nav-cta { text-decoration: none; }
 
 /* ─────────────────────────────────────
    HERO
@@ -412,9 +413,9 @@ a.btn-primary { text-decoration: none; display: inline-flex; align-items: center
   font-weight:500;
 }
 [data-theme="dark"] .fchip { background:#0f2030; color:rgba(255,255,255,0.8); box-shadow:0 8px 28px rgba(0,0,0,0.3); }
-.fchip.a { top:12%; left:-46%; animation:float 6s ease-in-out infinite; }
-.fchip.b { bottom:24%; left:-50%; animation:float 8s ease-in-out infinite 1.2s; }
-.fchip.c { top:32%; right:-42%; animation:float 7s ease-in-out infinite 0.6s; }
+.fchip.a { top:8%; left:-44%; animation:float 6s ease-in-out infinite; }
+.fchip.b { bottom:20%; left:-48%; animation:float 8s ease-in-out infinite 1.2s; }
+.fchip.c { top:36%; right:-40%; animation:float 7s ease-in-out infinite 0.6s; }
 .fd { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
 .fd.w { background:var(--wave); }
 .fd.s { background:var(--sky); }
@@ -813,7 +814,7 @@ footer { background:var(--ink); color:rgba(255,255,255,0.22); padding:38px 80px;
   <div class="nav-right">
     <span class="toggle-label">🌙</span>
     <button class="theme-toggle" id="themeToggle" aria-label="ダークモード切替"></button>
-    <button class="nav-cta">事前登録</button>
+    <a href="#waitlist" class="nav-cta">事前登録</a>
     <button class="hamburger" id="hamburger" aria-label="メニュー">
       <span></span><span></span><span></span>
     </button>
@@ -856,7 +857,7 @@ footer { background:var(--ink); color:rgba(255,255,255,0.22); padding:38px 80px;
       </div>
     </div>
 
-    <h1 class="hero-title">気づいたら、<br><em>変わっていた。</em></h1>
+    <h1 class="hero-title">自分を知ると、<br><em>生きたくなる。</em></h1>
     <p class="hero-subtitle">自分を知ると、生きたくなる。</p>
     <p class="hero-body">楽しさとモヤモヤ——その両方を記録することで、あなたというパターンが見えてくる。苦しまなくても、人生は変えられる。</p>
     <div class="hero-cta">
