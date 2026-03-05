@@ -1105,9 +1105,10 @@ footer { background:var(--ink); color:rgba(255,255,255,0.22); padding:38px 80px;
   <h2 class="cta-title reveal">変化は、<br><em>今日から始まる。</em></h2>
   <p class="cta-sub reveal">Fluxのアーリーアクセスに登録して、<br>いちばん最初に体験してください。</p>
   <div class="cta-form reveal">
-    <input class="cta-input" type="email" placeholder="メールアドレスを入力">
-    <button class="cta-btn">登録する</button>
+    <input class="cta-input" type="email" id="waitlistEmail" placeholder="メールアドレスを入力">
+    <button class="cta-btn" id="waitlistBtn" onclick="submitWaitlist()">登録する</button>
   </div>
+  <p id="waitlistSuccess" style="display:none; margin-top:20px; font-family:'Shippori Mincho',serif; font-size:14px; color:rgba(255,255,255,0.7); letter-spacing:0.05em;">ありがとうございます。最初にお知らせします。</p>
 </section>
 
 <!-- FOOTER -->
@@ -1125,6 +1126,36 @@ footer { background:var(--ink); color:rgba(255,255,255,0.22); padding:38px 80px;
 </footer>
 
 <script>
+  // Formspree waitlist
+  async function submitWaitlist() {
+    const email = document.getElementById('waitlistEmail').value;
+    const btn = document.getElementById('waitlistBtn');
+    const success = document.getElementById('waitlistSuccess');
+    if (!email || !email.includes('@')) {
+      document.getElementById('waitlistEmail').style.borderBottom = '1px solid rgba(255,100,100,0.6)';
+      return;
+    }
+    btn.textContent = '送信中...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/mjgabroa', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      if (res.ok) {
+        document.querySelector('.cta-form').style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.textContent = 'もう一度試してください';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'もう一度試してください';
+      btn.disabled = false;
+    }
+  }
+
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
